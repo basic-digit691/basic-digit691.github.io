@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nomad Catapult — Visual & Interactive Production Studio</title>
+  <meta name="description" content="Remote-first visual and interactive production studio creating motion design, CGI, compositing, AI-assisted media, websites, apps, games, live show visuals, and campaign content.">
+
+  <!-- SEO / Open Graph -->
+  <meta property="og:title" content="Nomad Catapult — Visual & Interactive Production Studio">
+  <meta property="og:description" content="Remote-first visual and interactive production studio creating motion design, CGI, compositing, AI-assisted media, websites, apps, games, live show visuals, and campaign content.">
+  <meta property="og:image" content="assets/images/hero_poster.png">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- WebGL Background & Effects -->
+  <div id="webgl-container" class="webgl-container"></div>
+
+  <!-- Custom Cursor -->
+  <div class="custom-cursor" id="custom-cursor"><span class="cursor-text"></span></div>
+
+  <!-- Easter Egg Cat -->
+  <div id="easter-egg-cat" class="easter-egg-cat">
+    <div class="cat-placeholder">🐱 Ууу, не тяни!</div>
+  </div>
+
+  <!-- Floating Navigation -->
+  <header class="main-header" id="header">
+    <div class="header-left">
+      <div class="logo">
+        <a href="#hero">
+          <span class="logo-accent">N</span>OMAD <span class="logo-accent">C</span>ATAPULT
+        </a>
+      </div>
+
+      <div class="lang-selector">
+        <button class="btn-lang active" data-lang="en">EN</button>
+        <button class="btn-lang" data-lang="ru">RU</button>
+        <button class="btn-lang" data-lang="zh">ZH</button>
+        <button class="btn-lang" data-lang="ja">JA</button>
+      </div>
+    </div>
+
+    <div class="header-right">
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span class="menu-bar"></span>
+        <span class="menu-bar"></span>
+      </button>
+    </div>
+
+    <nav class="nav-menu" id="nav-menu">
+      <ul>
+        <li><a href="#hero" class="nav-link active" id="nav-link-hero" data-i18n="nav_home">Home</a></li>
+        <li><a href="#services" class="nav-link" id="nav-link-services" data-i18n="nav_services">Services</a></li>
+        <li><a href="#work" class="nav-link" id="nav-link-work" data-i18n="nav_work">Selected Work</a></li>
+        <li><a href="#before-after" class="nav-link" id="nav-link-slider" data-i18n="nav_vfx">VFX Showcase</a></li>
+        <li><a href="#collab" class="nav-link" id="nav-link-collab" data-i18n="nav_collab">How We Work</a></li>
+        <li><a href="#contact" class="nav-link btn-contact-nav" id="nav-link-contact" data-i18n="nav_contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="hero">
+    <div class="hero-video-container">
+      <video autoplay muted loop playsinline poster="assets/images/hero_poster.png" id="hero-video" class="hero-video">
+        <source src="assets/video/hero.webm" type="video/webm">
+        <source src="assets/video/hero.mp4" type="video/mp4">
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-rotating-glass-particles-background-loop-42861-large.mp4" type="video/mp4">
+      </video>
+      <div class="hero-overlay"></div>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-title-container">
+        <!-- Sketch path animation simulator -->
+        <h1 class="hero-title animate-draw" id="hero-title">NOMAD CATAPULT</h1>
+      </div>
+      <p class="hero-subtitle" data-i18n="hero_subtitle">
+        Remote visual and interactive production studio for campaigns, websites, apps, games, live shows, and AI-assisted media.
+      </p>
+    </div>
+
+    <!-- Video Controls & Audio Overlay toggle -->
+    <div class="video-controls">
+      <button class="btn-control" id="video-mute-toggle" aria-label="Mute or unmute video background">
+        <svg id="icon-mute" class="control-icon" viewBox="0 0 24 24" width="24" height="24">
+          <path fill="currentColor" d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM12 4L9.91 6.09 12 8.18V4zm-8.27-.27L2.46 5.00 7.46 10H3v4h3l5 5v-6.27l4.02 4.02c-.52.39-1.11.7-1.76.88v2.06c1.2-.28 2.28-.88 3.16-1.68l2.12 2.12 1.27-1.27L3.73 3.73zM19 12c0 .87-.18 1.69-.49 2.44l1.5 1.5c.62-1.18.99-2.5.99-3.94 0-4.38-3.12-8.04-7.27-8.81v2.09c2.99.73 5.27 3.4 5.27 6.72z"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="scroll-indicator">
+      <a href="#positioning" aria-label="Scroll down to positioning section">
+        <span class="mouse-icon"><span class="wheel"></span></span>
+      </a>
+    </div>
+
+    <!-- Zoom Text Overlay (Revealed after video ends) -->
+    <div class="hero-zoom-container" id="hero-zoom-container">
+      <div class="hero-zoom-text" id="hero-zoom-text">NOMAD CATAPULT</div>
+    </div>
+  </section>
+
+  <main>
+    <!-- Positioning Section -->
+    <section class="positioning-section" id="positioning">
+      <div class="container">
+        <div class="positioning-grid">
+          <div class="motto-box">
+            <h2 class="editorial-motto" data-i18n="motto">Direct execution.<br>Flexible studio scale.</h2>
+          </div>
+          <div class="editorial-text">
+            <p class="lead-text" data-i18n="lead_text">
+              We help agencies, brands, and creative teams turn raw ideas into finished visuals, interactive experiences, tools, games, websites, and show content.
+            </p>
+            <p class="body-text" data-i18n="body_text">
+              Nomad Catapult operates as a remote-first creative production partner for any screen, stage, or playable surface. For focused tasks, you work directly with a senior artist for speed and efficiency. For larger productions, we assemble specialists across visual design, development, animation, sound, and AI-assisted workflows.
+            </p>
+          </div>
+        </div>
+
+        <!-- AI Orchestration Banner -->
+        <div class="agent-orchestration-banner">
+          <span class="banner-accent" data-i18n="banner_accent">// AI ORCHESTRATION</span>
+          <p class="banner-quote" data-i18n="banner_quote">
+            "While today's AI agents can generate content, only artists with 10+ years of production experience can orchestrate hundreds of agents efficiently and correctly to deliver human taste, precision, and craft."
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag" data-i18n="services_tag">What We Launch</span>
+          <h2 class="section-title" data-i18n="services_title">Visual Capabilities</h2>
+        </div>
+
+        <div class="services-grid">
+          <div class="service-card" id="service-motion">
+            <div class="service-icon">
+              <!-- Custom stylized SVG icons -->
+              <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="12" cy="12" r="9"/>
+                <path d="M12 3v18M3 12h18"/>
+                <path d="M12 12l5.5-5.5M12 12l-5.5 5.5"/>
+              </svg>
+            </div>
+            <h3 class="service-name" data-i18n="service_motion_title">Motion Design</h3>
+            <p class="service-desc" data-i18n="service_motion_desc">Dynamic animated graphics, bold 3D typography, explainers, commercial titles, and high-impact social cutdowns.</p>
+          </div>
+
+          <div class="service-card" id="service-cgi">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
+                <path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12"/>
+              </svg>
+            </div>
+            <h3 class="service-name" data-i18n="service_cgi_title">3D / CGI</h3>
+            <p class="service-desc" data-i18n="service_cgi_desc">High-end product visual renders, atmospheric look development, stylized abstract scenes, and animated commercial visual loops.</p>
+          </div>
+
+          <div class="service-card" id="service-cleanup">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+                <path d="M22 4L12 14.01l-3-3"/>
+              </svg>
+            </div>
+            <h3 class="service-name" data-i18n="service_cleanup_title">Compositing & Cleanup</h3>
+            <p class="service-desc" data-i18n="service_cleanup_desc">Production-grade wire removals, object removal, screen replacements, camera tracking, and seamless visual integration.</p>
+          </div>
+
+          <div class="service-card" id="service-ai">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>
+              </svg>
+            </div>
+            <h3 class="service-name" data-i18n="service_ai_title">AI-Assisted Visuals</h3>
+            <p class="service-desc" data-i18n="service_ai_desc">Rapid visual ideation, generated styleframes, concept art exploration, and hybrid workflows accelerating pitch proposals.</p>
+          </div>
+
+          <div class="service-card" id="service-campaign">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+                <path d="M8 12h8M12 8v8"/>
+              </svg>
+            </div>
+            <h3 class="service-name" data-i18n="service_campaign_title">Live & Campaign Assets</h3>
+            <p class="service-desc" data-i18n="service_campaign_desc">Social packages, stage and music show visuals, DOOH loops, presentation backgrounds, and sound-aware screen content.</p>
+          </div>
+
+          <div class="service-card" id="service-interactive">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="3" y="4" width="18" height="14" rx="2"/>
+                <path d="M8 22h8M12 18v4M8 9l-2 2 2 2M16 9l2 2-2 2"/>
+              </svg>
+            </div>
+            <h3 class="service-name" data-i18n="service_interactive_title">Interactive Media</h3>
+            <p class="service-desc" data-i18n="service_interactive_desc">Websites, creative apps, games, prototypes, canvas tools, and interactive platforms where visual ideas become usable systems.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Selected Works Grid -->
+    <section class="work-section" id="work">
+      <div class="container">
+        <div class="section-header-flex">
+          <div>
+            <span class="section-tag" data-i18n="work_tag">Selected Missions</span>
+            <h2 class="section-title" data-i18n="work_title">Visual Showcase</h2>
+          </div>
+          <!-- Filter Navigation -->
+          <div class="filter-controls" id="filter-controls">
+            <button class="btn-filter active" data-filter="all" data-i18n="filter_all">All</button>
+            <button class="btn-filter" data-filter="cgi" data-i18n="filter_cgi">CGI</button>
+            <button class="btn-filter" data-filter="motion" data-i18n="filter_motion">Motion</button>
+            <button class="btn-filter" data-filter="cleanup" data-i18n="filter_cleanup">Cleanup</button>
+            <button class="btn-filter" data-filter="ai" data-i18n="filter_ai">AI Concept</button>
+            <button class="btn-filter" data-filter="interactive" data-i18n="filter_interactive">Interactive</button>
+          </div>
+        </div>
+
+        <div class="work-grid" id="work-grid">
+          <!-- CGI Shot -->
+          <div class="work-item" data-category="cgi" id="work-aurora">
+            <div class="work-img-container">
+              <img src="assets/images/work_cgi.png" alt="Aurora Neon serum product shot" loading="lazy">
+              <div class="work-badge badge-client" data-i18n="badge_client">Client Work</div>
+              <div class="work-overlay">
+                <span class="btn-work-explore" data-i18n="btn_details">Details</span>
+              </div>
+            </div>
+            <div class="work-info">
+              <span class="work-cat" data-i18n="cat_cgi">3D / CGI</span>
+              <h3 class="work-title" data-i18n="work1_title">Aurora Serum Product Render</h3>
+              <p class="work-summary" data-i18n="work1_summary">Premium Octane render showing dynamic glass refraction and minimal studio neon lighting.</p>
+              <div class="work-tags">
+                <span>Octane</span><span>Blender</span><span>Product Shot</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Motion Typography -->
+          <div class="work-item" data-category="motion" id="work-launch">
+            <div class="work-img-container">
+              <img src="assets/images/work_motion.png" alt="LAUNCH Campaign typographic motion design" loading="lazy">
+              <div class="work-badge badge-personal" data-i18n="badge_personal">Studio Project</div>
+              <div class="work-overlay">
+                <span class="btn-work-explore" data-i18n="btn_details">Details</span>
+              </div>
+            </div>
+            <div class="work-info">
+              <span class="work-cat" data-i18n="cat_motion">Motion Design</span>
+              <h3 class="work-title" data-i18n="work2_title">LAUNCH Typographic Promo</h3>
+              <p class="work-summary" data-i18n="work2_summary">Dynamic typography animation integrated with physical simulation ribbons and camera tracking data.</p>
+              <div class="work-tags">
+                <span>After Effects</span><span>Cinema 4D</span><span>Typography</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- AI Concept -->
+          <div class="work-item" data-category="ai" id="work-jungle">
+            <div class="work-img-container">
+              <img src="assets/images/work_ai.png" alt="Mech figure in bioluminescent jungle concept styleframe" loading="lazy">
+              <div class="work-badge badge-ai" data-i18n="badge_ai">AI-Assisted Exploration</div>
+              <div class="work-overlay">
+                <span class="btn-work-explore" data-i18n="btn_details">Details</span>
+              </div>
+            </div>
+            <div class="work-info">
+              <span class="work-cat" data-i18n="cat_ai">AI Concept Art</span>
+              <h3 class="work-title" data-i18n="work3_title">Mech Bioluminescent Forest</h3>
+              <p class="work-summary" data-i18n="work3_summary">Hybrid CG composition enhanced by generative AI styleframes for rapid visual prototyping.</p>
+              <div class="work-tags">
+                <span>ComfyUI</span><span>Photoshop</span><span>Concept Art</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cleanup VFX (links to below section) -->
+          <div class="work-item" data-category="cleanup" id="work-street">
+            <div class="work-img-container">
+              <img src="assets/images/work_cleanup_after.png" alt="Cleaned up city street VFX shot" loading="lazy">
+              <div class="work-badge badge-client" data-i18n="badge_client">Client Work</div>
+              <div class="work-overlay">
+                <span class="btn-work-explore" data-i18n="btn_details">Details</span>
+              </div>
+            </div>
+            <div class="work-info">
+              <span class="work-cat" data-i18n="cat_cleanup">Compositing & Cleanup</span>
+              <h3 class="work-title" data-i18n="work4_title">Urban Street Invisible VFX</h3>
+              <p class="work-summary" data-i18n="work4_summary">Clean plate reconstruction, overhead wires removal, and custom holographic logo tracking integration.</p>
+              <div class="work-tags">
+                <span>Nuke</span><span>Mocha Pro</span><span>Invisible VFX</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- NomadCanvas Tool -->
+          <div class="work-item" data-category="interactive" id="work-canvas">
+            <div class="work-img-container">
+              <img src="assets/images/work_canvas.png" alt="NomadCanvas web drawing application" loading="lazy">
+              <div class="work-badge badge-personal" data-i18n="badge_personal">Studio Project</div>
+              <div class="work-overlay">
+                <span class="btn-work-explore" data-i18n="btn_details">Details</span>
+              </div>
+            </div>
+            <div class="work-info">
+              <span class="work-cat" data-i18n="cat_interactive">Interactive Media</span>
+              <h3 class="work-title" data-i18n="work5_title">NomadCanvas</h3>
+              <p class="work-summary" data-i18n="work5_summary">A lightweight, high-performance HTML5 canvas sketching application designed for digital graphics workflow.</p>
+              <div class="work-tags">
+                <span>Vanilla JS</span><span>HTML5 Canvas</span><span>Creative Tool</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Before / After Slider Section -->
+    <section class="before-after-section" id="before-after">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag" data-i18n="slider_tag">Invisible VFX</span>
+          <h2 class="section-title" data-i18n="slider_title">Production Cleanup</h2>
+          <p class="section-subtitle" data-i18n="slider_subtitle">Slide to check out the details of our cleanup, objects removal, and HUD integration pipeline.</p>
+        </div>
+
+        <!-- Slider Wrapper -->
+        <div class="slider-wrapper" id="vfx-slider-container">
+          <div class="slider-image-container">
+            <!-- After (Background) -->
+            <img src="assets/images/work_cleanup_after.png" class="image-after" alt="Cleaned up cinematic street with tracking sign" loading="lazy">
+            <span class="slider-label label-after" data-i18n="slider_after">Cleaned Shot</span>
+
+            <!-- Before (Overlapping Clip) -->
+            <div class="before-wrapper" id="before-img-clip">
+              <img src="assets/images/work_cleanup_before.png" class="image-before" alt="Raw footage with crew and wires visible" loading="lazy">
+              <span class="slider-label label-before" data-i18n="slider_before">Raw Footage</span>
+            </div>
+
+            <!-- Handle Line -->
+            <div class="slider-handle" id="slider-handle-bar">
+              <div class="handle-button">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                  <path d="M6.99 11L3 15l3.99 4v-3H14v-2H6.99v-3zM21 9l-3.99-4v3H10v2h7.01v3L21 9z"/>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Real input overlay -->
+            <input type="range" min="0" max="100" value="50" class="slider-input" id="vfx-slider-range" aria-label="Compare raw footage and cleaned shot slider">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How We Work Section -->
+    <section class="collab-section" id="collab">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag" data-i18n="collab_tag">Collaboration Formats</span>
+          <h2 class="section-title" data-i18n="collab_title">Flexible Team Scale</h2>
+        </div>
+
+        <div class="collab-grid">
+          <div class="collab-card">
+            <h3 class="collab-type" data-i18n="collab1_title">01. Freelance Support</h3>
+            <p class="collab-desc" data-i18n="collab1_desc">Direct backup for agencies, studios, and production houses that need senior-level support for CGI, motion design, or cleanup tasks. Fits into existing project pipelines.</p>
+          </div>
+
+          <div class="collab-card">
+            <h3 class="collab-type" data-i18n="collab2_title">02. Project Production</h3>
+            <p class="collab-desc" data-i18n="collab2_desc">End-to-end production assets for brands and startup teams. We handle the process from brief, styleframes, draft animations, rendering, up to the final deliverables.</p>
+          </div>
+
+          <div class="collab-card">
+            <h3 class="collab-type" data-i18n="collab3_title">03. White-Label Partner</h3>
+            <p class="collab-desc" data-i18n="collab3_desc">Unbranded production partner. We handle backend visual execution, CGI setups, and animations silently while your client-facing account team manages feedback.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Block -->
+    <section class="contact-section" id="contact">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="contact-text-column">
+            <span class="section-tag" data-i18n="contact_tag">Let's Connect</span>
+            <h2 class="section-title contact-heading" data-i18n="contact_title">Have a launch or production gap?</h2>
+            <p class="contact-lead" data-i18n="contact_lead">We turn pitch decks, rough concepts, and visual guidelines into finished high-end assets. Reach out to coordinate your next visual project.</p>
+
+            <div class="contact-methods">
+              <div class="method-item">
+                <span class="method-label" data-i18n="direct_email">Direct Email:</span>
+                <a href="mailto:nomad.catapult.team@gmail.com" class="method-link">nomad.catapult.team@gmail.com</a>
+              </div>
+              <div class="method-item">
+                <span class="method-label" data-i18n="telegram_channel">Telegram Channel:</span>
+                <a href="https://t.me/pk_cg" target="_blank" rel="noopener noreferrer" class="method-link">@pk_cg</a>
+              </div>
+            </div>
+
+            <div class="social-links">
+              <a href="https://vimeo.com" target="_blank" rel="noopener noreferrer" aria-label="Nomad Catapult Vimeo page">Vimeo</a>
+              <a href="https://behance.net" target="_blank" rel="noopener noreferrer" aria-label="Nomad Catapult Behance portfolio">Behance</a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="Nomad Catapult LinkedIn profile">LinkedIn</a>
+              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="Nomad Catapult YouTube channel">YouTube</a>
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <div class="contact-form-column">
+            <form class="contact-form" id="portfolio-contact-form">
+              <div class="form-group">
+                <label for="form-name" data-i18n="form_name">Name</label>
+                <input type="text" id="form-name" placeholder="Pavel Pakharukov" required>
+              </div>
+              <div class="form-group">
+                <label for="form-email" data-i18n="form_email">Email Address</label>
+                <input type="email" id="form-email" placeholder="client@agency.com" required>
+              </div>
+              <div class="form-group">
+                <label for="form-project" data-i18n="form_project">Project Details</label>
+                <textarea id="form-project" rows="5" placeholder="Briefly describe your CGI/Motion tasks, timeline, or production scale requirements..." required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block" id="btn-submit-form" data-i18n="btn_send">Send Message</button>
+              <div class="form-status-msg" id="form-status-msg"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container text-center">
+      <p data-i18n="footer_text">&copy; 2026 Nomad Catapult. All rights reserved. Remote Visual Production Studio.</p>
+    </div>
+  </footer>
+
+  <!-- Project Details Modal Dialog -->
+  <dialog id="project-details-modal" class="project-modal">
+    <div class="modal-wrapper">
+      <button class="modal-close-btn" id="modal-close-btn" aria-label="Close details modal">&times;</button>
+      <div class="modal-grid">
+        <!-- Media Section -->
+        <div class="modal-media-col">
+          <div class="modal-hero-media">
+            <video id="modal-video" muted loop playsinline controls class="modal-video" style="display: none;"></video>
+            <img id="modal-image" class="modal-image" src="" alt="" style="display: none;">
+          </div>
+          <div class="modal-thumbnails" id="modal-thumbnails"></div>
+        </div>
+        <!-- Info Section -->
+        <div class="modal-info-col">
+          <span class="modal-category" id="modal-project-category">CGI</span>
+          <h2 class="modal-title" id="modal-project-title">Project Title</h2>
+
+          <div class="modal-meta-table">
+            <div class="modal-meta-row">
+              <span class="meta-label" data-i18n="modal_role">Role / Services</span>
+              <span class="meta-value" id="modal-project-role">3D Art</span>
+            </div>
+            <div class="modal-meta-row">
+              <span class="meta-label" data-i18n="modal_client">Client / Type</span>
+              <span class="meta-value" id="modal-project-client">Commercial</span>
+            </div>
+            <div class="modal-meta-row">
+              <span class="meta-label" data-i18n="modal_tools">Tools & Tech</span>
+              <span class="meta-value" id="modal-project-tools">Blender</span>
+            </div>
+          </div>
+
+          <div class="modal-description-section">
+            <h4 class="modal-description-heading" data-i18n="modal_overview">Overview</h4>
+            <p class="modal-description-text" id="modal-project-description"></p>
+          </div>
+
+          <div class="modal-actions" id="modal-slider-action-wrapper" style="display: none;">
+            <a href="#before-after" class="btn btn-secondary btn-block" id="modal-slider-link" data-i18n="btn_view_slider">View Interactive Slider</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Javascript Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- Main Logic -->
+  <script src="script.js"></script>
+  <!-- WOW Effects Logic -->
+  <script src="wow.js"></script>
+</body>
+</html>

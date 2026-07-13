@@ -1,0 +1,5 @@
+# Operating-system metadata
+.DS_Store
+
+# Work-in-progress media is kept in the private workspace, never deployed.
+assets/video/drafts/
