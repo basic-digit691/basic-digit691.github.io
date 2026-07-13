@@ -555,7 +555,7 @@ section {
   display: flex;
   overflow-x: auto;
   gap: 1.5rem;
-  padding-bottom: 1.5rem;
+  padding: 0.75rem 0 1.5rem;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
@@ -1587,9 +1587,9 @@ body.custom-cursor-active .btn {
 }
 
 .custom-cursor.hovered {
-  width: 60px;
-  height: 60px;
-  background-color: rgba(204, 255, 0, 0.9);
+  width: 34px;
+  height: 34px;
+  background-color: rgba(204, 255, 0, 0.38);
   mix-blend-mode: normal;
 }
 
@@ -1606,6 +1606,24 @@ body.custom-cursor-active .btn {
 
 .custom-cursor.hovered .cursor-text {
   opacity: 1;
+}
+
+/* A native dialog lives in the browser's top layer, above the custom cursor. */
+.project-modal[open],
+.project-modal[open] * {
+  cursor: auto !important;
+}
+
+.project-modal[open] button,
+.project-modal[open] a,
+.project-modal[open] input,
+.project-modal[open] textarea {
+  cursor: pointer !important;
+}
+
+.project-modal[open] input,
+.project-modal[open] textarea {
+  cursor: text !important;
 }
 
 /* Zoom Text Overlay */
@@ -1648,4 +1666,3 @@ body.custom-cursor-active .btn {
 .video-webgl-active .hero-video {
   opacity: 0;
 }
-

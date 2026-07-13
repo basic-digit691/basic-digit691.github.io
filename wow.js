@@ -1,62 +1,52 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Activate custom cursor styling on body
-  document.body.classList.add('custom-cursor-active');
-
   // --- 1. Custom Cursor ---
   const cursor = document.getElementById('custom-cursor');
-  const cursorText = cursor.querySelector('.cursor-text');
-  
-  // Track mouse coordinates
-  let mouse = { x: 0, y: 0 };
-  // Smooth cursor position
-  let cursorObj = { x: 0, y: 0 };
-  
-  window.addEventListener('mousemove', (e) => {
-    mouse.x = e.clientX;
-    mouse.y = e.clientY;
-    // Show cursor on first move
-    if (!cursor.classList.contains('visible')) {
-      cursor.classList.add('visible');
-    }
-  });
+  const supportsCustomCursor = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const heroVideo = document.getElementById('hero-video');
 
-  // Use GSAP ticker for smooth cursor interpolation
-  gsap.ticker.add(() => {
-    // Lerp (Linear Interpolation) for smooth trailing
-    cursorObj.x += (mouse.x - cursorObj.x) * 0.15;
-    cursorObj.y += (mouse.y - cursorObj.y) * 0.15;
-    
-    cursor.style.transform = `translate(${cursorObj.x}px, ${cursorObj.y}px) translate(-50%, -50%)`;
-  });
+  if (cursor && supportsCustomCursor) {
+    document.body.classList.add('custom-cursor-active');
+    const cursorText = cursor.querySelector('.cursor-text');
+    let mouse = { x: 0, y: 0 };
+    let cursorObj = { x: 0, y: 0 };
 
-  // Hover states for cursor
-  const interactiveElements = document.querySelectorAll('a, button, .btn, .work-item');
-  interactiveElements.forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      cursor.classList.add('hovered');
-      // Special cases
-      if (el.classList.contains('work-item')) {
-        cursorText.textContent = 'VIEW';
-      } else {
-        cursorText.textContent = '';
+    window.addEventListener('mousemove', (e) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+      if (!cursor.classList.contains('visible')) {
+        cursor.classList.add('visible');
       }
     });
-    el.addEventListener('mouseleave', () => {
-      cursor.classList.remove('hovered');
-      cursorText.textContent = '';
-    });
-  });
 
-  const heroVideo = document.getElementById('hero-video');
-  if (heroVideo) {
-    heroVideo.addEventListener('mouseenter', () => {
-      cursor.classList.add('hovered');
-      cursorText.textContent = 'WATCH';
+    // The small amount of lag is intentional, but the cursor remains compact on controls.
+    gsap.ticker.add(() => {
+      cursorObj.x += (mouse.x - cursorObj.x) * 0.15;
+      cursorObj.y += (mouse.y - cursorObj.y) * 0.15;
+      cursor.style.transform = `translate(${cursorObj.x}px, ${cursorObj.y}px) translate(-50%, -50%)`;
     });
-    heroVideo.addEventListener('mouseleave', () => {
-      cursor.classList.remove('hovered');
-      cursorText.textContent = '';
+
+    const interactiveElements = document.querySelectorAll('a, button, .btn, .work-item');
+    interactiveElements.forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursor.classList.add('hovered');
+        cursorText.textContent = el.classList.contains('work-item') ? 'VIEW' : '';
+      });
+      el.addEventListener('mouseleave', () => {
+        cursor.classList.remove('hovered');
+        cursorText.textContent = '';
+      });
     });
+
+    if (heroVideo) {
+      heroVideo.addEventListener('mouseenter', () => {
+        cursor.classList.add('hovered');
+        cursorText.textContent = 'WATCH';
+      });
+      heroVideo.addEventListener('mouseleave', () => {
+        cursor.classList.remove('hovered');
+        cursorText.textContent = '';
+      });
+    }
   }
 
   // --- 2. Magnetic Buttons ---
